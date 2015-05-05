@@ -15,11 +15,7 @@ else
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
-<<<<<<< HEAD
 	$db['default']['database'] = 'ecommerce';
-=======
-	$db['default']['database'] = '';
->>>>>>> 6216394fb802acc3d369faf472fe187dd6fd154a
 }
 
 $db['default']['dbdriver'] = 'mysql';

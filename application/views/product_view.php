@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="row">
 			    <h3>Website Name</h3>
-			    <p><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
+			    <p><a href="/cart/add_to_cart">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
 		    </div>
 		</div>
 	</nav>
@@ -28,10 +28,17 @@
 
 		<div id="album_view" class="col-md-5">
 			<a href="">Go Back</a>
+			<? foreach ($albums as $album) { ?>
 			<div class="col-xs-6 col-md-3">
+				<?=$album['name']?>;
 				<img src="/assets/images/beyonce.png" alt="...">
-
+				<?=$album['price']?>;
+				<form action='cart/add_to_cart' method='post'>
+				<input type='submit' value='add to cart'
+				</form>
 			</div>
+			<?}
+			?>
 		</div>
 		<div id="info" class="col-md-7">
 			
