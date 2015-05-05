@@ -12,7 +12,7 @@ public function __construct()
 	{
 		
 		$data['albums']= $this->Album->get_all_albums();
-		$this->load->view('product_view', $data);
+		$this->load->view('products', $data);
 	}
 
 	public function create()

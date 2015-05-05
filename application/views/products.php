@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<style type="text/css">
+<style type="text/css">
 		#sidebar{
 			border: 1px solid black;
 			padding: 10px;
@@ -23,6 +23,10 @@
 		}
 		#sort_select{
 			width: 20%;
+		}
+		img{
+			width:170px;
+			height:170px;
 		}
 	</style>
 </head>
@@ -42,16 +46,30 @@
 				<button type="submit"><i class="fa fa-search"></i></button>
 			</form>
 			<ul>
-			    <li>
-			        <label>Album</label>
+			        <label>Albums</label>
+			        <?foreach ($albums as $album) {?>
 			        <ul>
-			            <li>Greatest Hits: The Beatles</li>
-			            <li>Self-Titled: Beyonce</li>
-			            <li>Zion: Bob Marley</li>
+			            <li><?=$album['name']?></li>
 	        		</ul>
-	    		</li>
-	    		<li>Artist</li>
-	    		<li>Genre</li>
+	   
+	    		<?}
+	    		?>
+	    		<label>Artists</label>
+	    		<?foreach ($albums as $album) {?>
+	    		<ul>
+	    			<li><?=$album['artist']?></li>
+	    		</ul>
+
+	    		<?}
+	    		?>
+	    		<label>Genre</label>
+	    		<?foreach ($albums as $album) {?>
+	    		<ul>
+	    			<li><?=$album['genre']?></li>
+	    		</ul>
+
+	    		<?}
+	    		?>
 	    		<li><i>Show All</i></li>
 			</ul>
 		</div>
@@ -69,47 +87,20 @@
 				<option>Price</option>
 				<option>Recently Added</option>
 			</select>
-			<div id="products_diplay" class="row">
-				<div class="col-xs-6 col-md-3">
+		<div id="products_diplay" class="row">
+			<?foreach ($albums as $album) {?>
+				<div class="col-xs-6 col-md-4">
 				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/beatles.jpg" alt="...">
 				    	<div class="caption">
-							<p><b>Abbey Road</b></p>
-							<p>The Beatles</p>
-							<p>$19.99</p>
+				    		<img src=<?=$album['image']?>>
+							<p><b><?=$album['name']?></b></p>
+							<p><?=$album['artist']?></p>
+							<p>$<?=$album['price']?></p>
 						</div>
 				    </a>
 				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/beyonce.png" alt="...">
-				    	<div class="caption">
-							<p><b>Beyonce</b></p>
-							<p>Beyonce</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/bob-dylan.jpg" alt="...">
-				    	<div class="caption">
-							<p><b>The Times They Are A-Changin'</b></p>
-							<p>Bob Dylan</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/bob-marley.jpg" alt="...">
-				    	<div class="caption">
-							<p><b>Legend</b></p>
-							<p>Bob Marley</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
+				<?}
+				?>
 			</div>
 			<nav>
 			  <ul class="pagination">
