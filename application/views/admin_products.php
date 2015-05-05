@@ -18,8 +18,8 @@
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Dashboard</h3>
-		    <h4><b><a href="#">Orders</a></b></h4>
-		    <h4><a href="#">Products</a></h4>
+		    <h4><a href="#">Orders</a></h4>
+		    <h4><b><a href="#">Products</a></b></h4>
 		    <a href="">log off</a>
 		</div>
 	</nav>
@@ -29,34 +29,27 @@
       			<div class="input-group-addon"><i class="fa fa-search"></i></div>
       			<input id="search_bar" type="text" class="form-control" placeholder="search">
       		</div>
-			<select id="sort_select" class="form-control">
-				<option>Show All</option>
-				<option>In Process</option>
-				<option>Shipped</option>
-			</select>
+			<button type="submit" class="btn btn-primary">Add new product</button>
 		</div>
 		<table class="table table-striped">
 			<thead>
-				<th>Order ID</th>
+				<th>Picture</th>
+				<th>ID</th>
 				<th>Name</th>
-				<th>Date</th>
-				<th>Billing Address</th>
-				<th>Total</th>
-				<th>Status</th>
+				<th>Inventory Count</th>
+				<th>Quantity Sold</th>
+				<th>Action</th>
 			</thead>
 			<tbody>
 				<tr>
-					<td>100</td>
-					<td>Sade</td>
-					<td>5/4/15</td>
-					<td>123 Dojo Way Mountain View, CA 95004</td>
-					<td>$114.85</td>
+					<td><img src=""></td>
+					<td>1</td>
+					<td>Lengend: Bob Marley</td>
+					<td>54</td>
+					<td>302</td>
 					<td>
-						<select class="form-control">
-							<option>Shipped</option>
-							<option>In Progress</option>
-							<option>Canceled</option>
-						</select>
+						<a href="">edit</a>
+						<a href="">delete</a>
 					</td>
 				</tr>
 			</tbody>
