@@ -3,4 +3,4 @@
 $route['default_controller'] = "admin";
 $route['404_override'] = '';
 
-//end of routes.php
+// end of routes.php
