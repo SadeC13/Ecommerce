@@ -11,34 +11,7 @@
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container">
-		    <h3>Website Name</h3>
-		    <p><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
-		</div>
-	</nav>
-	<div class="container">
-		<table class="table table-striped">
-			<thead>
-				<th>Item</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Total</th>
-			</thead>
-			<tbody>
-	<form action='/cart/complete_purchase' method='post'>
-			<input type='hidden' name='action' value='id'>
-			<tr>
-				<td>Album name:<?=$this->session->userdata('name')?> <img src="#"></td>
-				<td>Price: <?=$this->session->userdata('price')?>
-				<td><input type='text' name='quantity'><?=$this->session->userdata('quantity')?></td>
-				<td><?=$this->session->userdata('total')?></td>
-				<td><input type='submit' value='Complete Purchase'></td>
-			</tr>
-			</tbody>
-		
-	</form>
-			
-		
-		<!-- <div class="row">
+		<div class="row">
 			<form class="col-md-6">
 				<h2>Shipping Information</h2>
 				<div class="form-group">
@@ -121,7 +94,7 @@
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>	
-		</div> -->
+		</div>
 	</div>
 </body>
 </html>
