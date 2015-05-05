@@ -9,9 +9,6 @@
 		#search_bar{
 			width: 20%;
 		}
-		#sort_select{
-			width: 20%;
-		}
 	</style>
 </head>
 <body>
