@@ -6,17 +6,77 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<style type="text/css">
+		body{
+		  background: url(/assets/images/BI.jpg) no-repeat center center fixed;
+		  background-size: cover;
+		}
+		#top_bar{
+			background: url(/assets/images/BI4.jpg) no-repeat center center fixed;
+			background-size: cover;
+			height: 150px;
+			border: none;
+		}
+		#top_bar ul li{
+			  position: relative;
+			  display: inline-block;
+			  float: right;
+			  bottom: 25px;
+			  margin: 10px;
+			  color: white;
+		}
+		#top_bar img{
+			position: relative;
+  			top: 6px;
+		}
+		#nav_bar{
+			background: linear-gradient(#757575, #303030);
+			position: relative;
+  			top: -23px;
+  			text-align: center;
+  			padding-top: 5px;
+  			box-shadow: 5px 5px 5px ##1F1F1F;
+		}
+		#nav_bar ul li{
+			display: inline;
+			list-style-type: none;
+			margin: 10px;
+		}
+		#nav_bar a{
+			color: white;
+		}
+		.container{
+			color: white;
+		}
 		#sidebar{
-			border: 1px solid black;
+			border: 1px solid #757575;
+			border-radius: 5px;
 			padding: 10px;
 			font-size: 12px;
+		}
+		#search_btn{
+			  position: relative;
+			  left: 82%;
+			  top: -32px;
+			  background-color: white;
+			  font-size: 20px;
+			  height: 29px;
+			  border: none;
+			  border-radius: 3px;
+			  color: grey;
 		}
 		#search_input{
 			width: 80%;
 		}
 		#main{
-			border: 1px solid black;
 			margin-left: 30px;
+		}
+		.thumbnail{
+			background-color: transparent;
+			border: none;
+			height: 265px;
+		}
+		.thumbnail .caption{
+			color: white;
 		}
 		ul{
 			list-style-type: none;
@@ -24,22 +84,37 @@
 		#sort_select{
 			width: 20%;
 		}
+		#pagination{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav id="top_bar" class="navbar navbar-default">
 		<div class="container">
 			<div class="row">
-			    <h3>Website Name</h3>
-			    <p><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
-		    </div>
+			    <img src="/assets/images/logo4.png">
+			    <ul>
+			    	<li><a href="#">Log In</a></li>
+			    	<li><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a>
+		    </div></li>
+			    </ul>
+			    
 		</div>
 	</nav>
+	<div id="nav_bar" class="row">
+		<ul>
+			<li><a href="">HOME</a></li>|
+			<li><a href="">ABOUT</a></li>|
+			<li><a href="">MUSIC</a></li>|
+			<li><a href="">CONTACT</a></li>
+		</ul>
+	</div>
 	<div class="container">
 		<div id="sidebar" class="col-md-3">
 			<form id="search" class="form-group">
 				<input id="search_input" class="form-control" type="text" placeholder="search product...">
-				<button type="submit"><i class="fa fa-search"></i></button>
+				<button id="search_btn" type="submit"><i class="fa fa-search"></i></button>
 			</form>
 			<ul>
 			    <li>
@@ -56,7 +131,7 @@
 			</ul>
 		</div>
 		<div id="main"class="col-md-8">
-			<h3>Albums (2)</h3>
+			<h2>Albums</h2>
 			<nav>
 			  <ul class="pager">
 			    <li><a href="#"><i class="fa fa-arrow-left"></i>   Previous</a></li>
@@ -111,7 +186,7 @@
 				    </a>
 				</div>
 			</div>
-			<nav>
+			<nav id="pagination">
 			  <ul class="pagination">
 			    <li>
 			      <a href="#" aria-label="Previous">
