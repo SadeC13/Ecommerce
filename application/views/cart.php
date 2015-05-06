@@ -27,7 +27,7 @@
 	<form action='/cart/complete_purchase' method='post'>
 			<input type='hidden' name='action' value='id'>
 			<tr>
-				<td>Album name:<?=$this->session->userdata('name')?> <img src="#"></td>
+				<td><?=$album['name']?><img src=<?=$album['image']?>></td>
 				<td>Price: <?=$this->session->userdata('price')?>
 				<td><input type='text' name='quantity'><?=$this->session->userdata('quantity')?></td>
 				<td><?=$this->session->userdata('total')?></td>

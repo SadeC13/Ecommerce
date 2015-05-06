@@ -27,4 +27,9 @@ class Album extends CI_Controller
 		$query="UPDATE albums SET name = ?, artist= ?, genre= ?, description = ?, price= ?  WHERE id =?";
 		$this->db->query($query, array($post['name'],$post['artist'], $post['genre'],$post['description'],$post['price'],$post['id']));
 	}
+	public function view($post)
+	{
+		$query="SELECT * FROM albums Where id= ?";
+		return $this->db->query($query, array($post['id']))->row_array();
+	}
 }

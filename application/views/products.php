@@ -5,6 +5,29 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https:code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$('img').click(function()
+			{
+				$.post($(this).attr('action'), $(this).serialize(), function(res)
+				{
+					$('#notes').html(res);
+					$('.updateForm textarea').change(function()
+					{
+						$(this).parent().submit();
+					})
+				})
+				return false;
+			});
+
+			$('.updateForm textarea').change(function()
+			{
+				$(this).parent().submit();
+			})
+		});
+	</script>
 <style type="text/css">
 		#sidebar{
 			border: 1px solid black;
@@ -89,6 +112,8 @@
 			</select>
 		<div id="products_diplay" class="row">
 			<?foreach ($albums as $album) {?>
+			<form action='/products/view_product_info' method='post'>
+			<input type='hidden' name='id' value=<?=$album['id']?>>
 				<div class="col-xs-6 col-md-4">
 				    <a href="#" class="thumbnail">
 				    	<div class="caption">
@@ -96,9 +121,11 @@
 							<p><b><?=$album['name']?></b></p>
 							<p><?=$album['artist']?></p>
 							<p>$<?=$album['price']?></p>
+						<input type="submit" value="info">
 						</div>
 				    </a>
 				</div>
+			</form>
 				<?}
 				?>
 			</div>
