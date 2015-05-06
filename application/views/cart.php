@@ -8,34 +8,51 @@
 	<style type="text/css">
 	</style>
 </head>
+<style>
+img{
+	height:150px;
+	width:150px;
+}
+#continue input{
+	background-color:green;
+}
+</style>
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Website Name</h3>
-		    <p><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
+		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i><?=count($info)?></a></p>
 		</div>
 	</nav>
 	<div class="container">
 		<table class="table table-striped">
 			<thead>
+				<th>album</th>
 				<th>Item</th>
 				<th>Price</th>
 				<th>Quantity</th>
 				<th>Total</th>
 			</thead>
+			<form action='/cart/complete' method='post'>
 			<tbody>
-	<form action='/cart/complete_purchase' method='post'>
-			<input type='hidden' name='action' value='id'>
+			<?for($i=0;$i<count($info);$i++)
+		{?>
 			<tr>
-				<td><?=$album['name']?><img src=<?=$album['image']?>></td>
-				<td>Price: <?=$this->session->userdata('price')?>
-				<td><input type='text' name='quantity'><?=$this->session->userdata('quantity')?></td>
-				<td><?=$this->session->userdata('total')?></td>
+				<td><img src=<?=$info[$i]['image']?>></td>
+				<td><?=$info[$i]['name']?></td>
+				<td>$<?=$info[$i]['price']?></td>
+				<td><?=$info[$i]['quantity']?></td>
+				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
 				<td><input type='submit' value='Complete Purchase'></td>
 			</tr>
+			<?}
+			?>
+			</form>
+			<form id='continue' name='continue' action='/admin/index' method='post'>
+			<input type='submit' value='Continue shopping'>
+			</form>
 			</tbody>
 		
-	</form>
 			
 		
 		<!-- <div class="row">

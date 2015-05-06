@@ -10,37 +10,35 @@ class Cart extends CI_Controller {
 
 	public function view()
 	{
-		$this->load->model('Album');
-		$data['album']=$this->Album->view($this->input->post());
-		$this->load->view('cart',$data);
+		var_dump($this->session->userdata('info'));
+		$this->load->view('cart',array('info' => $this->session->userdata('info')));
 	}
 
+	public function add_to_cart()
+	{
+		$post = $this->input->post();
+		$old_info = $this->session->userdata('info');
+		if (!$this->session->userdata('info'))
+		{
+			$this->session->set_userdata('info', array());
+		}
+		$items=$this->session->userdata('info');
+		$post = $this->input->post();
+		array_push($items, $post);
+		$this->session->set_userdata('info', $items);
 
+		$new_info = $this->session->userdata('info');
+		// var_dump($post);
+		// var_dump($old_info);
+		// var_dump($new_info);
 
-	// public function add_to_cart()
-	// {
-	// 	if($this->session->userdata($this->input->post('id')))
-	// 	{
-		
-	// 		// $this->session->set_userdata('name', $this->input->post('name'));
-	// 		// $this->session->set_userdata('price', $this->input->post('price'));
-	// 		$this->session->set_userdata('quantity', $this->input->post('quantity')+$this->session->userdata('quantity'));
-	// 		$this->session->set_userdata('total', $this->session->userdata('quantity')*$this->session->userdata('price'));
+		 // $this->session->unset_userdata('info');
+		redirect('/cart/view');
+	}
 
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->session->set_userdata('id');
-	// 		$this->session->set_userdata('name', $this->input->post('name'));
-	// 		$this->session->set_userdata('price', $this->input->post('price'));
-	// 		$this->session->set_userdata('quantity', $this->input->post('quantity'));
-	// 		$this->session->set_userdata('total', $this->input->post('quantity')*$this->input->post('price'));
-	// 	}
-	// 	$this->load->view('cart');
-	// }
-	// public function complete_purchase()
-	// {
-	// 	$this->load->view('complete_purchase');
-	// }
+	public function complete()
+	{
+		$this->load->view('complete_purchase');
+	}
 
 }

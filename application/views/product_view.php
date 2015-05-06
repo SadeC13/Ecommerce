@@ -54,11 +54,17 @@
 		</div>
 		<div id="info" class="col-md-7">
 			<p><?=$album['description']?></p>
-			<form action='/cart/view' method='post'>
-				<select id="price_select" name='quantity' class="form-control">
-					<option>1: $<?=$album['price']?></option>
-					<option>2: $<?=$album['price'] * 2?></option>
-					<option>3: $<?=$album['price'] * 3?></option>
+			<form action='/cart/add_to_cart' method='post'>
+			<input type='hidden' name='id' value=<?=$album['id']?>>
+			<input type='hidden' name='name' value=<?=$album['name']?>>
+			<input type='hidden' name='artist' value=<?=$album['artist']?>>
+			<input type='hidden' name='image' value=<?=$album['image']?>>
+			<input type='hidden' name='price' value=<?=$album['price']?>>
+
+			<select id="price_select" name='quantity' class="form-control">
+					<option value='1'>1: $<?=$album['price']?></option>
+					<option value='2'>2: $<?=$album['price'] * 2?></option>
+					<option value='3'>3: $<?=$album['price'] * 3?></option>
 				</select>
 				<input type='submit' value="Add to cart">
 			</form>

@@ -13,7 +13,11 @@ public function __construct()
 		
 		$data['albums']= $this->Album->get_all_albums();
 		
+<<<<<<< HEAD
 		$this->load->view('home', $data);
+=======
+		$this->load->view('products', $data);
+>>>>>>> 533c625ae4e381882f28190e7ba1fea3bef8e660
 	}
 
 	public function create()
