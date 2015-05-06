@@ -83,31 +83,31 @@
 			</div>
 		</div>
 		<div id="info">
-		<table class="table table-striped">
-			<thead>
-				<th>ID</th>
-				<th>Item</th>
-				<th>Quantity</th>
-				<th>Total</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>100</td>
-					<td>Abbey Road: The Beatles</td>
-					<td>$19.99</td>
-					<td>233</td>
-					<td>$19.99</td>
-				</tr>
-			</tbody>
-		</table>
-			<div id="status">
-				<p>Status: </p>
-			</div>
-			<div id="total_box">
-				<p>Sub Total: </p>
-				<p>Shipping: </p>
-				<p>Total Price: </p>
-			</div>
+			<table class="table table-striped">
+				<thead>
+					<th>ID</th>
+					<th>Item</th>
+					<th>Quantity</th>
+					<th>Total</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>100</td>
+						<td>Abbey Road: The Beatles</td>
+						<td>$19.99</td>
+						<td>233</td>
+						<td>$19.99</td>
+					</tr>
+				</tbody>
+			</table>
+				<div id="status">
+					<p>Status: </p>
+				</div>
+				<div id="total_box">
+					<p>Sub Total: </p>
+					<p>Shipping: </p>
+					<p>Total Price: </p>
+				</div>
 		</div>
 	</div>
 </body>
