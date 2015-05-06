@@ -10,9 +10,11 @@ public function __construct()
 	}
 	public function index()
 	{
-		
+		$this->load->view('home');
+	}
+	public function products()
+	{	
 		$data['albums']= $this->Album->get_all_albums();
-		
 		$this->load->view('products', $data);
 	}
 

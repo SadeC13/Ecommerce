@@ -10,7 +10,6 @@ class Cart extends CI_Controller {
 
 	public function view()
 	{
-		var_dump($this->session->userdata('info'));
 		$this->load->view('cart',array('info' => $this->session->userdata('info')));
 	}
 
@@ -31,14 +30,17 @@ class Cart extends CI_Controller {
 		// var_dump($post);
 		// var_dump($old_info);
 		// var_dump($new_info);
-
-		 // $this->session->unset_userdata('info');
 		redirect('/cart/view');
 	}
 
 	public function complete()
 	{
 		$this->load->view('complete_purchase');
+	}
+	public function empty_cart()
+	{
+		 $this->session->unset_userdata('info');
+		 redirect('/cart/view');
 	}
 
 }
