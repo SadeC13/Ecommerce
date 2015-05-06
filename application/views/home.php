@@ -44,7 +44,7 @@
 		</div>
 		<div <div class="col-md-3">
 			<div id="icons" class="row">
-				<a href=""><i class="fa fa-headphones fa-5x"></i><p>All Music</p></a><br><br>
+				<a href="/products/view_product_info"><i class="fa fa-headphones fa-5x"></i><p>All Music</p></a><br><br>
 				<a href=""><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
 				<a href=""><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
 				<a href=""><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
