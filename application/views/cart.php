@@ -21,7 +21,14 @@ img{
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Website Name</h3>
+		    <?if($this->session->userdata('info'))
+		    {?>
 		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i><?=count($info)?></a></p>
+		    <?}
+		    else
+		    {?>
+			<p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>0</a></p>
+		    <?}?>
 		</div>
 	</nav>
 	<div class="container">
@@ -33,26 +40,30 @@ img{
 				<th>Quantity</th>
 				<th>Total</th>
 			</thead>
-			<form action='/cart/complete' method='post'>
 			<tbody>
-			<?for($i=0;$i<count($info);$i++)
+			
+			<?for($i=0; $i<count($info); $i++)
 		{?>
+			<form action='/cart/edit' method='post'>
 			<tr>
+				<input type='hidden' name='id' value=<?=$info[$i]['id']?>>
 				<td><img src=<?=$info[$i]['image']?>></td>
 				<td><?=$info[$i]['name']?></td>
 				<td>$<?=$info[$i]['price']?></td>
-				<td><?=$info[$i]['quantity']?></td>
+				<td><?=$info[$i]['quantity']?><button class="btn btn-default" name='quantity' type='submit' ><i class="fa fa-pencil"></i></button></td>   
 				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
-				<td><button class="btn btn-default" type='submit' >Complete Purchase</button></td>
+				<td><input name='delete' type='submit' value="delete"></td>
+
+				<!-- <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
 			</tr>
+			</form>
 			<?}
 			?>
+			<form action='/cart/complete' method='post'>
+			<button class="btn btn-default" type='submit' >Complete Purchase</button>
 			</form>
 			<form id='continue' name='continue' action='/admin/products' method='post'>
 			<button class= "btn btn-success" type='submit'>Continue shopping</button>
-
-			<input type='submit' value='Continue shopping'>
-
 			</form>
 			<form id='empty' name='empty' action='/cart/empty_cart' method='post'>
 			<button class='btn btn-danger' type='submit'>Empty Cart</button>

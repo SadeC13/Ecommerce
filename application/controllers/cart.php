@@ -17,6 +17,7 @@ class Cart extends CI_Controller {
 	{
 		$post = $this->input->post();
 		$old_info = $this->session->userdata('info');
+
 		if (!$this->session->userdata('info'))
 		{
 			$this->session->set_userdata('info', array());
@@ -42,5 +43,38 @@ class Cart extends CI_Controller {
 		 $this->session->unset_userdata('info');
 		 redirect('/cart/view');
 	}
+	public function edit()
+	{
+		if($this->input->post('quantity'))
+		{
+			$this->load->model('Album');
+			$data['album']=$this->Album->view($this->input->post());
+			$this->load->view('product_view',$data);
+		}
 
-}
+		if($this->input->post('delete'))
+		{
+			
+			$this->load->model('Album');
+			$this->Album->destroy($this->input->post());
+			redirect('/cart/view');
+		}
+
+			// $items=$this->session->userdata('info');
+			// for($i=0;$i<count($items);$i++)
+			// {
+			// 	if ($items[$i]== $this->input->post())
+			// 	{
+			// 		$temp=$items[$i];
+			// 		$items[$i]=$items[count($items)-1];
+			// 		$items[count($items)-1]=$temp;
+
+			// 		array_pop($items[count($items)-1]);
+			// 		$this->session->set_userdata('info',$items);
+			// 		redirect('/cart/view');
+			// 	}
+			// }
+			// var_dump($items);
+		}
+
+	}

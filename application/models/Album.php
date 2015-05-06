@@ -18,8 +18,13 @@ class Album extends CI_Controller
 
 	public function destroy($post)
 	{
-		$query="DELETE FROM albums Where id= ?";
-		$this->db->query($query, array($post['id']));
+		$new_session_data = array();
+		foreach($this->session->userdata('info') as $album) {
+			if ($album['id'] != $post['id']) {
+				array_push($new_session_data, $album);
+			}			
+		}
+		$this->session->set_userdata('info', $new_session_data);
 	}
 
 	public function update($post)
@@ -30,6 +35,11 @@ class Album extends CI_Controller
 	public function view($post)
 	{
 		$query="SELECT * FROM albums Where id= ?";
+		return $this->db->query($query, array($post['id']))->row_array();
+	}
+	public function product($id)
+	{
+		$query= "SELECT * FROM albums where id= ?";
 		return $this->db->query($query, array($post['id']))->row_array();
 	}
 }
