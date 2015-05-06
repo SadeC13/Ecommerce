@@ -21,7 +21,7 @@ img{
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Website Name</h3>
-		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i><?=count($info)?></a></p>
+		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>   (<?=count($info)?>)</a></p>
 		</div>
 	</nav>
 	<div class="container">
@@ -50,8 +50,6 @@ img{
 			</form>
 			<form id='continue' name='continue' action='/admin/products' method='post'>
 			<button class= "btn btn-success" type='submit'>Continue shopping</button>
-
-			<input type='submit' value='Continue shopping'>
 
 			</form>
 			<form id='empty' name='empty' action='/cart/empty_cart' method='post'>
