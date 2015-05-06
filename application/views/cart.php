@@ -43,16 +43,15 @@ img{
 				<td>$<?=$info[$i]['price']?></td>
 				<td><?=$info[$i]['quantity']?></td>
 				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
-				<td><input type='submit' value='Complete Purchase'></td>
+				<td><button class="btn btn-default" type='submit' >Complete Purchase</button></td>
 			</tr>
 			<?}
 			?>
 			</form>
-			<form id='continue' name='continue' action='/admin/index' method='post'>
-			<input type='submit' value='Continue shopping'>
+			<form id='continue' name='continue' action='/admin/products' method='post'>
+			<button class= "btn btn-success" type='submit'>Continue shopping</button>
 			</form>
 			</tbody>
-		
 			
 		
 		<!-- <div class="row">
