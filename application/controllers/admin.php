@@ -12,7 +12,9 @@ public function __construct()
 	{
 		
 		$data['albums']= $this->Album->get_all_albums();
+		
 		$this->load->view('products', $data);
+		$this->load->view('admin_edit', $data);
 	}
 
 	public function create()

@@ -5,6 +5,29 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https:code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$('img').click(function()
+			{
+				$.post($(this).attr('action'), $(this).serialize(), function(res)
+				{
+					$('#notes').html(res);
+					$('.updateForm textarea').change(function()
+					{
+						$(this).parent().submit();
+					})
+				})
+				return false;
+			});
+
+			$('.updateForm textarea').change(function()
+			{
+				$(this).parent().submit();
+			})
+		});
+	</script>
 	<style type="text/css">
 		body{
 		  background: url(/assets/images/BI.jpg) no-repeat center center fixed;
@@ -78,6 +101,10 @@
 		.thumbnail .caption{
 			color: white;
 		}
+		.thumbnail img{
+			width:170px;
+			height:170px;
+		}
 		ul{
 			list-style-type: none;
 		}
@@ -87,6 +114,7 @@
 		#pagination{
 			text-align: center;
 		}
+
 	</style>
 </head>
 <body>
@@ -117,16 +145,30 @@
 				<button id="search_btn" type="submit"><i class="fa fa-search"></i></button>
 			</form>
 			<ul>
-			    <li>
-			        <label>Album</label>
+			        <label>Albums</label>
+			        <?foreach ($albums as $album) {?>
 			        <ul>
-			            <li>Greatest Hits: The Beatles</li>
-			            <li>Self-Titled: Beyonce</li>
-			            <li>Zion: Bob Marley</li>
+			            <li><?=$album['name']?></li>
 	        		</ul>
-	    		</li>
-	    		<li>Artist</li>
-	    		<li>Genre</li>
+	   
+	    		<?}
+	    		?>
+	    		<label>Artists</label>
+	    		<?foreach ($albums as $album) {?>
+	    		<ul>
+	    			<li><?=$album['artist']?></li>
+	    		</ul>
+
+	    		<?}
+	    		?>
+	    		<label>Genre</label>
+	    		<?foreach ($albums as $album) {?>
+	    		<ul>
+	    			<li><?=$album['genre']?></li>
+	    		</ul>
+
+	    		<?}
+	    		?>
 	    		<li><i>Show All</i></li>
 			</ul>
 		</div>
@@ -144,47 +186,24 @@
 				<option>Price</option>
 				<option>Recently Added</option>
 			</select>
-			<div id="products_diplay" class="row">
-				<div class="col-xs-6 col-md-3">
+		<div id="products_diplay" class="row">
+			<?foreach ($albums as $album) {?>
+			<form action='/products/view_product_info' method='post'>
+			<input type='hidden' name='id' value=<?=$album['id']?>>
+				<div class="col-xs-6 col-md-4">
 				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/beatles.jpg" alt="...">
 				    	<div class="caption">
-							<p><b>Abbey Road</b></p>
-							<p>The Beatles</p>
-							<p>$19.99</p>
+				    		<img src=<?=$album['image']?>>
+							<p><b><?=$album['name']?></b></p>
+							<p><?=$album['artist']?></p>
+							<p>$<?=$album['price']?></p>
+						<input type="submit" value="info">
 						</div>
 				    </a>
 				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/beyonce.png" alt="...">
-				    	<div class="caption">
-							<p><b>Beyonce</b></p>
-							<p>Beyonce</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/bob-dylan.jpg" alt="...">
-				    	<div class="caption">
-							<p><b>The Times They Are A-Changin'</b></p>
-							<p>Bob Dylan</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
-				<div class="col-xs-6 col-md-3">
-				    <a href="#" class="thumbnail">
-				    	<img src="/assets/images/bob-marley.jpg" alt="...">
-				    	<div class="caption">
-							<p><b>Legend</b></p>
-							<p>Bob Marley</p>
-							<p>$19.99</p>
-						</div>
-				    </a>
-				</div>
+			</form>
+				<?}
+				?>
 			</div>
 			<nav id="pagination">
 			  <ul class="pagination">

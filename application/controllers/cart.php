@@ -8,30 +8,39 @@ class Cart extends CI_Controller {
 		// $this->output->enable_profiler();
 	}
 
-	public function add_to_cart()
+	public function view()
 	{
-		if($this->session->userdata($this->input->post('id')))
-		{
-		
-			// $this->session->set_userdata('name', $this->input->post('name'));
-			// $this->session->set_userdata('price', $this->input->post('price'));
-			$this->session->set_userdata('quantity', $this->input->post('quantity')+$this->session->userdata('quantity'));
-			$this->session->set_userdata('total', $this->session->userdata('quantity')*$this->session->userdata('price'));
+		$this->load->model('Album');
+		$data['album']=$this->Album->view($this->input->post());
+		$this->load->view('cart',$data);
+	}
 
-		}
-		else
-		{
-			$this->session->set_userdata('id');
-			$this->session->set_userdata('name', $this->input->post('name'));
-			$this->session->set_userdata('price', $this->input->post('price'));
-			$this->session->set_userdata('quantity', $this->input->post('quantity'));
-			$this->session->set_userdata('total', $this->input->post('quantity')*$this->input->post('price'));
-		}
-		$this->load->view('cart');
-	}
-	public function complete_purchase()
-	{
-		$this->load->view('complete_purchase');
-	}
+
+
+	// public function add_to_cart()
+	// {
+	// 	if($this->session->userdata($this->input->post('id')))
+	// 	{
+		
+	// 		// $this->session->set_userdata('name', $this->input->post('name'));
+	// 		// $this->session->set_userdata('price', $this->input->post('price'));
+	// 		$this->session->set_userdata('quantity', $this->input->post('quantity')+$this->session->userdata('quantity'));
+	// 		$this->session->set_userdata('total', $this->session->userdata('quantity')*$this->session->userdata('price'));
+
+	// 	}
+	// 	else
+	// 	{
+	// 		$this->session->set_userdata('id');
+	// 		$this->session->set_userdata('name', $this->input->post('name'));
+	// 		$this->session->set_userdata('price', $this->input->post('price'));
+	// 		$this->session->set_userdata('quantity', $this->input->post('quantity'));
+	// 		$this->session->set_userdata('total', $this->input->post('quantity')*$this->input->post('price'));
+	// 	}
+	// 	$this->load->view('cart');
+	// }
+	// public function complete_purchase()
+	// {
+	// 	$this->load->view('complete_purchase');
+	// }
 
 }
