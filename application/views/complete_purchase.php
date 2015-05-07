@@ -95,6 +95,9 @@
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>	
 		</div>
+		<form action='/admin/index' method='post'>
+			<button class="btn btn-default" type='submit' >Home</button>
+			</form>
 	</div>
 </body>
 </html>
