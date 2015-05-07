@@ -21,6 +21,14 @@ img{
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Website Name</h3>
+		    <?if($this->session->userdata('info'))
+		    {?>
+		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i><?=count($info)?></a></p>
+		    <?}
+		    else
+		    {?>
+			<p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>0</a></p>
+		    <?}?>
 		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>   (<?=count($info)?>)</a></p>
 		</div>
 	</nav>
@@ -33,115 +41,35 @@ img{
 				<th>Quantity</th>
 				<th>Total</th>
 			</thead>
-			<form action='/cart/complete' method='post'>
 			<tbody>
-			<?for($i=0;$i<count($info);$i++)
+			
+			<?for($i=0; $i<count($info); $i++)
 		{?>
+			<form action='/cart/edit' method='post'>
 			<tr>
+				<input type='hidden' name='id' value=<?=$info[$i]['id']?>>
 				<td><img src=<?=$info[$i]['image']?>></td>
 				<td><?=$info[$i]['name']?></td>
 				<td>$<?=$info[$i]['price']?></td>
-				<td><?=$info[$i]['quantity']?></td>
+				<td><?=$info[$i]['quantity']?><button class="btn btn-default" name='quantity' type='submit' ><i class="fa fa-pencil"></i></button></td>   
 				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
-				<td><button class="btn btn-default" type='submit' >Complete Purchase</button></td>
+				<td><input name='delete' type='submit' value="delete"></td>
+
+				<!-- <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
 			</tr>
+			</form>
 			<?}
 			?>
+			<form action='/cart/complete' method='post'>
+			<button class="btn btn-default" type='submit' >Complete Purchase</button>
 			</form>
 			<form id='continue' name='continue' action='/admin/products' method='post'>
 			<button class= "btn btn-success" type='submit'>Continue shopping</button>
-
 			</form>
 			<form id='empty' name='empty' action='/cart/empty_cart' method='post'>
 			<button class='btn btn-danger' type='submit'>Empty Cart</button>
 			</form>
 			</tbody>
-			
-		
-		<!-- <div class="row">
-			<form class="col-md-6">
-				<h2>Shipping Information</h2>
-				<div class="form-group">
-				    <label for="first_name">First Name</label>
-				    <input type="text" class="form-control" id="first_name">
-				</div>
-				<div class="form-group">
-				    <label for="last_name">Last Name</label>
-				    <input type="text" class="form-control" id="last_name">
-				</div>
-				<div class="form-group">
-				    <label for="address">Address</label>
-				    <input type="text" class="form-control" id="address">
-				</div>
-				<div class="form-group">
-				    <label for="address2">Address 2</label>
-				    <input type="text" class="form-control" id="address2">
-				</div>
-				<div class="form-group">
-				    <label for="city">City</label>
-				    <input type="text" class="form-control" id="city">
-				</div>
-				<div class="form-group">
-				    <label for="state">State</label>
-				    <input type="text" class="form-control" id="state">
-				</div>
-				<div class="form-group">
-				    <label for="zip">Zipcode</label>
-				    <input type="text" class="form-control" id="zipcode">
-				</div>
-				<button id="cont_shop" type="submit" class="btn btn-default">Submit</button>
-			</form>	
-			<form class="col-md-6">
-				<h2>Billing Information</h2>
-				 <div class="checkbox">
-					<label>
-			    		<input type="checkbox"> Same as Shipping
-			    	</label>
-				</div>
-				<div class="form-group">
-				    <label for="first_name">First Name</label>
-				    <input type="text" class="form-control" id="first_name">
-				</div>
-				<div class="form-group">
-				    <label for="last_name">Last Name</label>
-				    <input type="text" class="form-control" id="last_name">
-				</div>
-				<div class="form-group">
-				    <label for="address">Address</label>
-				    <input type="text" class="form-control" id="address">
-				</div>
-				<div class="form-group">
-				    <label for="address2">Address 2</label>
-				    <input type="text" class="form-control" id="address2">
-				</div>
-				<div class="form-group">
-				    <label for="city">City</label>
-				    <input type="text" class="form-control" id="city">
-				</div>
-				<div class="form-group">
-				    <label for="state">State</label>
-				    <input type="text" class="form-control" id="state">
-				</div>
-				<div class="form-group">
-				    <label for="zip">Zipcode</label>
-				    <input type="text" class="form-control" id="zipcode">
-				</div>
-				
-				<div class="form-group">
-				    <label for="card_num">Card</label>
-				    <input type="text" class="form-control" id="card_num">
-				</div>
-				<div class="form-group">
-				    <label for="security">Security Code</label>
-				    <input type="text" class="form-control" id="security">
-				</div>
-				<div class="form-group">
-				    <label for="exp">Expiration</label>
-				    <input type="text" id="mm" class="form-control"> / <input type="text" id="dd" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
-		</div> -->
 	</div>
 </body>
 </html>

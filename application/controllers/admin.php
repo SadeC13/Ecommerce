@@ -10,7 +10,7 @@ public function __construct()
 	}
 	public function index()
 	{
-		$this->load->view('admin_show');
+		$this->load->view('home');
 	}
 
 	public function products()

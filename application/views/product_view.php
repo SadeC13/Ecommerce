@@ -38,7 +38,7 @@
 		<div class="container">
 			<div class="row">
 			    <h3>Website Name</h3>
-			    <p><a href="/cart/add_to_cart">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a></p>
+			    <p><a href="/cart/add_to_cart">Shopping Cart <i class="fa fa-shopping-cart"></i></a></p>
 		    </div>
 		</div>
 	</nav>

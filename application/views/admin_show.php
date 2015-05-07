@@ -47,6 +47,37 @@
 		th{
 			color: #E8E8E8;
 		}
+		#order_box{
+			border: 1px solid white;
+			background-color: lightgrey;
+		}
+/*		#info{
+			border: 1px solid white;
+		}*/
+		table{
+			position: relative;
+			left: 76%;
+			top: -418px;
+		}
+		#status{
+			border: 1px solid white;
+			background-color: #B6D9A5;
+			width: 27%;
+			padding: 5px;
+			position: relative;
+			left: 76%;
+			top: -416px;
+		}
+		#total_box{
+			border: 1px solid white;
+			background-color: lightgrey;
+			padding: 5px;
+			width: 70%;
+			position: relative;
+			height: 94px;
+			left: 106%;
+			top: -459px;
+		}
 	</style>
 </head>
 <body>
@@ -62,8 +93,8 @@
 			<li><a href="">PRODUCTS</a></li>
 		</ul>
 	</div>
-	<div class="container">
-		<div id="order_box">
+	<div id="side" class="container">
+		<div class="col-md-4" id="order_box">
 			<h5><b>Order ID:</b></h5>
 			<div id="cust_ship" class="row">
 				<h5><b>Customer Shipping Info:</b></h5>
@@ -82,7 +113,9 @@
 				<p>Zip:</p>
 			</div>
 		</div>
-		<div id="info">
+	</div>
+	<div id="main" class="container">
+		<div class="col-md-7" id="info">
 			<table class="table table-striped">
 				<thead>
 					<th>ID</th>
@@ -100,14 +133,14 @@
 					</tr>
 				</tbody>
 			</table>
-				<div id="status">
-					<p>Status: </p>
-				</div>
-				<div id="total_box">
-					<p>Sub Total: </p>
-					<p>Shipping: </p>
-					<p>Total Price: </p>
-				</div>
+			<div id="status">
+				<p>Status: shipped</p>
+			</div>
+			<div id="total_box">
+				<p>Sub Total: </p>
+				<p>Shipping: </p>
+				<p>Total Price: </p>
+			</div>
 		</div>
 	</div>
 </body>

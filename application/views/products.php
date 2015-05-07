@@ -124,7 +124,7 @@
 			    <img src="/assets/images/logo4.png">
 			    <ul>
 			    	<li><a href="#">Log In</a></li>
-			    	<li><a href="#">Shopping Cart <i class="fa fa-shopping-cart"></i> (3)</a>
+			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
 		    </div></li>
 			    </ul>
 			    
