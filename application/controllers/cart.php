@@ -48,8 +48,8 @@ class Cart extends CI_Controller {
 		if($this->input->post('quantity'))
 		{
 			$this->load->model('Album');
-			$data['album']=$this->Album->view($this->input->post());
-			$this->load->view('product_view',$data);
+			redirect('/products/view_product_info');
+			$this->Album->update($this->input->post());
 		}
 
 		if($this->input->post('delete'))

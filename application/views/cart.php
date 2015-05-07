@@ -29,7 +29,6 @@ img{
 		    {?>
 			<p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>0</a></p>
 		    <?}?>
-		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>   (<?=count($info)?>)</a></p>
 		</div>
 	</nav>
 	<div class="container">
@@ -51,11 +50,11 @@ img{
 				<td><img src=<?=$info[$i]['image']?>></td>
 				<td><?=$info[$i]['name']?></td>
 				<td>$<?=$info[$i]['price']?></td>
-				<td><?=$info[$i]['quantity']?><button class="btn btn-default" name='quantity' type='submit' ><i class="fa fa-pencil"></i></button></td>   
+				<td><?=$info[$i]['quantity']?><input type='submit' name='quantity' value='change'></td>   
 				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
 				<td><input name='delete' type='submit' value="delete"></td>
 
-				<!-- <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
+				<!-- // <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
 			</tr>
 			</form>
 			<?}
