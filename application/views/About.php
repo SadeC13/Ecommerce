@@ -9,40 +9,42 @@
 		body{
 			background: url(/assets/images/BI4.jpg) no-repeat center center fixed;
 			background-size: cover; 
-			color:white;
+			color:#E8E8E8;
 			}
 		#main
 		{
-			margin: auto;
-			width:50%;
-			text-align: center;
+			  margin: auto;
+			  width: 50%;
+			  text-align: center;
+			  position: relative;
+			  top: 222px;
 		}
 		h4{
 			display:inline-block;
 		}
 		ul li{
 			display:inline-block;
-			color:lime;
+			color:#E8E8E8;
 			font-weight: bold;
 		}
 		h4{
 			font-weight: bolder;
-			color:lime;
+			color:#E8E8E8;
 		}
 		
 	</style>
 	</head>
 	<body>
-	<div id='main'>
-	<h1>About us</h1>
-	<h3>Dedicated to providing the best albums to our customers. Here you can find whats Hott! Simply browse, choose, and purchase!</h3>
-		<h4>Contact:</h4>
-		<ul>
-			<li><b>phone:</b>925-999-9999</li>
-			<li><b>email:</b>stella@records.com</li>
-			<li><b>fax:</b>925-803-4444</li>
-			<li><b>address:</b>123 come get me ave. Los Angeles CA 92404</li>
-		</ul>
+		<div id='main' class="container">
+			<h1>About us</h1>
+			<h3>Dedicated to providing the best albums to our customers. Here you can find whats Hott! Simply browse, choose, and purchase!</h3>
+			<h4>Contact:</h4>
+			<ul>
+				<li><b>Phone:</b>925-999-9999</li>
+				<li><b>Email:</b>stella@records.com</li>
+				<li><b>Fax:</b>925-803-4444</li>
+				<li><b>Address:</b>123 come get me ave. Los Angeles CA 92404</li>
+			</ul>
 		</div>
 	</body>
 	</html>

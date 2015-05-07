@@ -105,11 +105,19 @@
 			width:170px;
 			height:170px;
 		}
+		#info_btn{
+			  position: relative;
+			  left: 60%;
+			  top: -47px;
+		}
 		ul{
 			list-style-type: none;
 		}
 		#sort_select{
-			width: 20%;
+			  width: 20%;
+			  position: relative;
+			  top: -50px;
+
 		}
 		#pagination{
 			text-align: center;
@@ -121,7 +129,7 @@
 	<nav id="top_bar" class="navbar navbar-default">
 		<div class="container">
 			<div class="row">
-			    <img src="/assets/images/logo4.png">
+			    <a href="/"><img src="/assets/images/logo4.png"></a>
 			    <ul>
 			    	<li><a href="/admin/login">Log In</a></li>
 			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
@@ -134,7 +142,7 @@
 		<ul>
 			<li><a href="/admin/index">HOME</a></li>|
 			<li><a href="/admin/about">ABOUT</a></li>|
-			<li><a href="/">MUSIC</a></li>|
+			<li><a href="">MUSIC</a></li>|
 			<li><a href="/admin/about">CONTACT</a></li>
 		</ul>
 	</div>
@@ -197,7 +205,7 @@
 							<p><b><?=$album['name']?></b></p>
 							<p><?=$album['artist']?></p>
 							<p>$<?=$album['price']?></p>
-						<input type="submit" value="info">
+						<button id="info_btn" class="btn btn-default" type="submit">Info</button>
 						</div>
 				    </a>
 				</div>

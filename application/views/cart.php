@@ -9,29 +9,80 @@
 	</style>
 </head>
 <style>
-img{
+		body{
+		  background: url(/assets/images/BI.jpg) no-repeat center center fixed;
+		  background-size: cover;
+		}
+		#top_bar{
+			background: url(/assets/images/BI4.jpg) no-repeat center center fixed;
+			background-size: cover;
+			height: 150px;
+			border: none;
+		}
+		#top_bar ul li{
+			  position: relative;
+			  display: inline-block;
+			  float: right;
+			  bottom: 25px;
+			  margin: 10px;
+			  color: white;
+		}
+		#top_bar img{
+			position: relative;
+  			top: 6px;
+		}
+		#nav_bar{
+			background: linear-gradient(#757575, #303030);
+			position: relative;
+  			top: -23px;
+  			text-align: center;
+  			padding-top: 5px;
+  			box-shadow: 5px 5px 5px ##1F1F1F;
+		}
+		#nav_bar ul li{
+			display: inline;
+			list-style-type: none;
+			margin: 10px;
+		}
+		#nav_bar a{
+			color: white;
+		}
+		.container{
+			color: white;
+		}
+		.total{
+			color: #E8E8E8;
+		}
+table img{
 	height:150px;
 	width:150px;
 }
-#continue input{
-	background-color:green;
+th{
+	color: #E8E8E8;
 }
 </style>
 <body>
 <?php $cart = ($this->session->userdata('cart')); ?>
-	<nav class="navbar navbar-default">
+	<nav id="top_bar" class="navbar navbar-default">
 		<div class="container">
-		    <h3>Website Name</h3>
-		    <?if($this->session->userdata('info'))
-		    {?>
-		    <p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i><?=count($info)?></a></p>
-		    <?}
-		    else
-		    {?>
-			<p><a href="">Shopping Cart <i class="fa fa-shopping-cart"></i>0</a></p>
-		    <?}?>
+			<div class="row">
+			    <a href="/"><img src="/assets/images/logo4.png"></a>
+			    <ul>
+			    	<li><a href="#">Log In</a></li>
+			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
+		    </div></li>
+			    </ul>
+			    
 		</div>
 	</nav>
+	<div id="nav_bar" class="row">
+		<ul>
+			<li><a href="/admin/index">HOME</a></li>|
+			<li><a href="/admin/about">ABOUT</a></li>|
+			<li><a href="/">MUSIC</a></li>|
+			<li><a href="/admin/about">CONTACT</a></li>
+		</ul>
+	</div>
 	<div class="container">
 		<table class="table table-striped">
 			<thead>
@@ -65,11 +116,11 @@ img{
 			?>
 
 			<tr>
-				<td><b>Total Price</b></td>
+				<td class="total"><b>Total Price</b></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>$<?=$sum?></td>
+				<td class="total">$<?=$sum?></td>
 				<td>
 			<form action='/cart/complete' method='post'>
 			<button class="btn btn-default" type='submit' >Complete Purchase</button>

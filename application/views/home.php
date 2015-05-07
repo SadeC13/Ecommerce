@@ -29,8 +29,21 @@
   			height: 553px;
   			text-align: center;
 		}
-		a{
+		#icons a{
 			color: white;
+		}
+		#bottom_bar{
+			text-align: center;
+
+		}
+		#bottom_bar a{
+			color: #6B6B6B;
+
+		}
+		#bottom_bar ul li{
+			display: inline;
+			list-style-type: none;
+			margin: 10px;
 		}
 	</style>
 </head>
@@ -45,11 +58,29 @@
 		<div <div class="col-md-3">
 			<div id="icons" class="row">
 				<a href="/admin/products"><i class="fa fa-headphones fa-5x"></i><p>All Music</p></a><br><br>
+<<<<<<< HEAD
 				<a href="/admin/products"><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
 				<a href="/admin/about"><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
 				<a href="/admin/login"><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
+=======
+				<a href=""><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
+				<a href=""><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
+				<a href="/admin/log_reg"><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
+>>>>>>> 45467c18372934c4ec77f7f5e0f63a47bdbde5ad
 			</div>
 		</div>
+		<nav id="bottom_bar" class="navbar-fixed-bottom">
+			<div class="container">
+				<div class="row">
+					<ul>
+						<li><a href="/admin/About">About</a></li>|
+						<li><a href="">Terms and Conditions</a></li>|
+						<li><a href="">Privacy</a></li>|
+						<li><a href="">Jobs</a></li>
+					</ul> 
+				</div> 
+			</div>
+		</nav>
 	</div>
 </body>
 </html>
