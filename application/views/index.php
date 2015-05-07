@@ -39,6 +39,11 @@
 			top: 282px;
 			right: 38%;
 		}
+		#home{
+			border:none;
+			margin:auto;
+			width:6%;
+		}
 	</style>
 </head>
 <body>
@@ -84,5 +89,8 @@
 			</form>	
 		</div>
 	</div>
+		<form id='home' action='/admin/index' method='post'>
+			<button class="btn btn-default" type='submit' >Home</button>
+			</form>
 </body>
 </html>

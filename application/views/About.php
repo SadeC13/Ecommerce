@@ -45,6 +45,9 @@
 				<li><b>Fax:</b>925-803-4444</li>
 				<li><b>Address:</b>123 come get me ave. Los Angeles CA 92404</li>
 			</ul>
+			<form action='/admin/index' method='post'>
+			<button class="btn btn-default" type='submit' >Home</button>
+			</form>
 		</div>
 	</body>
 	</html>

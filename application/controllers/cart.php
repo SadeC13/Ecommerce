@@ -10,12 +10,6 @@ class Cart extends CI_Controller {
 
 	public function view()
 	{
-		if (!($this->session->userdata('info'))) {
-			 $this->session->userdata('info', array());
-				$cart = $this->session->userdata('info');
-				$cart[] = $this->input->post();
-				$this->session->set_userdata('info', $cart);
-		}
 		$this->load->view('cart',array('info' => $this->session->userdata('info')));
 	}
 
@@ -86,6 +80,7 @@ public function complete()
 	public function empty_cart()
 	{
 		 $this->session->unset_userdata('info');
+		 $this->session->set_userdata('info',array());
 		 redirect('/cart/view');
 	}
 	public function edit()

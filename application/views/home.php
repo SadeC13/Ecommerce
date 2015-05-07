@@ -58,15 +58,10 @@
 		<div <div class="col-md-3">
 			<div id="icons" class="row">
 				<a href="/admin/products"><i class="fa fa-headphones fa-5x"></i><p>All Music</p></a><br><br>
-<<<<<<< HEAD
 				<a href="/admin/products"><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
 				<a href="/admin/about"><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
 				<a href="/admin/login"><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
-=======
-				<a href=""><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
-				<a href=""><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
-				<a href="/admin/log_reg"><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
->>>>>>> 45467c18372934c4ec77f7f5e0f63a47bdbde5ad
+
 			</div>
 		</div>
 		<nav id="bottom_bar" class="navbar-fixed-bottom">
