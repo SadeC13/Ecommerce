@@ -43,7 +43,7 @@
 </head>
 <body>
 	<div class="container">
-		<img src="/assets/images/logo4.png">
+		<a href="/"><img src="/assets/images/logo4.png"></a>
 		<div class="row">
 			<form id="reg" class="col-md-5">
 				<h2>Register</h2>

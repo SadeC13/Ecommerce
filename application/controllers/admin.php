@@ -16,6 +16,10 @@ public function __construct()
 	{
 		$this->load->view('About');
 	}
+	public function log_reg()
+	{
+		$this->load->view("index");
+	}
 
 	public function products()
 	{	
