@@ -16,7 +16,10 @@ public function __construct()
 	{
 		$this->load->view('About');
 	}
-
+	public function login()
+	{
+		$this->load->view('index');
+	}
 	public function products()
 	{	
 		$data['albums']= $this->Album->get_all_albums();
