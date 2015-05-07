@@ -10,31 +10,76 @@ class Cart extends CI_Controller {
 
 	public function view()
 	{
+		if (!($this->session->userdata('info'))) {
+			 $this->session->userdata('info', array());
+				$cart = $this->session->userdata('info');
+				$cart[] = $this->input->post();
+				$this->session->set_userdata('info', $cart);
+		}
 		$this->load->view('cart',array('info' => $this->session->userdata('info')));
 	}
 
 	public function add_to_cart()
 	{
-		$post = $this->input->post();
-		$old_info = $this->session->userdata('info');
-
-		if (!$this->session->userdata('info'))
-		{
-			$this->session->set_userdata('info', array());
+	// 	$this->session->sess_destroy();
+	// die();
+		if (!($this->session->userdata('info'))) {
+			 $this->session->userdata('info', array());
+				$cart = $this->session->userdata('info');
+				$cart[] = $this->input->post();
+				$this->session->set_userdata('info', $cart);
+				redirect('/cart/view');
 		}
-		$items=$this->session->userdata('info');
-		$post = $this->input->post();
-		array_push($items, $post);
-		$this->session->set_userdata('info', $items);
+		
+				foreach ($this->session->userdata('info') as $key => $value) {
+					if ($this->input->post('id') == $value['id']) {
+						$this_one = $this->session->userdata('info')[$key];
+						$this_one['quantity'] = (int)$this_one['quantity'] +  (int)$this->input->post('quantity');
+						$food = $this->session->userdata('info');
+						unset($food[$key]);
+						$food[] = $this_one;
+						$this->session->set_userdata('info', $food);
+						// var_dump($food);
+						redirect('/cart/view');
+					}
+				}
+				$cart = $this->session->userdata('info');
+				$cart[] = $this->input->post();
+				$this->session->set_userdata('info', $cart);
+				redirect('/cart/view');
+				
 
-		$new_info = $this->session->userdata('info');
+
+		// $id = $this->input->post('id');
+		// $cart = $this->session->userdata('info');
+		// if (!empty($cart[$id]))
+		// {
+		// 	$item = $cart[$id];
+		// 	$quantity = $this->input->post('quantity') + $item['quantity'];
+		// 	$cart[$id]['quantity'] = $quantity;
+		// 	$this->session->set_userdata('cart', $cart);
+			
+		// }
+		// else if (!empty($this->session->userdata('cart')))
+		// {
+		// 	$cart[$id] = $this->input->post();
+		// 	$this->session->set_userdata('cart', $cart);
+		// }
+		// else
+		// {
+		// 	$this->session->set_userdata('cart', array('id' => $this->input->post()));
+		// }
+		// $items=$this->session->userdata('info');
+		// $post = $this->input->post();
+		// // array_push($items, $post);
+		// $this->session->set_userdata('info', $items);
+		// $new_info = $this->session->userdata('info');
 		// var_dump($post);
 		// var_dump($old_info);
 		// var_dump($new_info);
-		redirect('/cart/view');
 	}
 
-	public function complete()
+public function complete()
 	{
 		$this->load->view('complete_purchase');
 	}
@@ -47,11 +92,12 @@ class Cart extends CI_Controller {
 	{
 		if($this->input->post('quantity'))
 		{
+			// var_dump($this->input->post());
+			// die();
 			$this->load->model('Album');
-			redirect('/products/view_product_info');
-			$this->Album->update($this->input->post());
+			$data['album']=$this->Album->view($this->input->post());
+			$this->load->view('product_view',$data);
 		}
-
 		if($this->input->post('delete'))
 		{
 			
@@ -60,21 +106,5 @@ class Cart extends CI_Controller {
 			redirect('/cart/view');
 		}
 
-			// $items=$this->session->userdata('info');
-			// for($i=0;$i<count($items);$i++)
-			// {
-			// 	if ($items[$i]== $this->input->post())
-			// 	{
-			// 		$temp=$items[$i];
-			// 		$items[$i]=$items[count($items)-1];
-			// 		$items[count($items)-1]=$temp;
-
-			// 		array_pop($items[count($items)-1]);
-			// 		$this->session->set_userdata('info',$items);
-			// 		redirect('/cart/view');
-			// 	}
-			// }
-			// var_dump($items);
-		}
-
 	}
+}

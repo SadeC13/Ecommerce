@@ -18,6 +18,7 @@ img{
 }
 </style>
 <body>
+<?php $cart = ($this->session->userdata('cart')); ?>
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <h3>Website Name</h3>
@@ -41,27 +42,41 @@ img{
 				<th>Total</th>
 			</thead>
 			<tbody>
-			
-			<?for($i=0; $i<count($info); $i++)
-		{?>
+		<?php foreach ($info as $item) {?>
 			<form action='/cart/edit' method='post'>
-			<tr>
-				<input type='hidden' name='id' value=<?=$info[$i]['id']?>>
-				<td><img src=<?=$info[$i]['image']?>></td>
-				<td><?=$info[$i]['name']?></td>
-				<td>$<?=$info[$i]['price']?></td>
-				<td><?=$info[$i]['quantity']?><input type='submit' name='quantity' value='change'></td>   
-				<td>$<?=$info[$i]['quantity']* $info[$i]['price']?></td>
-				<td><input name='delete' type='submit' value="delete"></td>
 
-				<!-- // <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
+			<tr>
+				<input type='hidden' name='id' value=<?=$item['id']?>>
+				<td><img src=<?=$item['image']?>></td>
+				<td><?=$item['name']?></td>
+				<td>$<?=$item['price']?></td>
+				<td><?=$item['quantity']?><input type='submit' name='quantity' value='change'></td>   
+				<td>$<?=$item['quantity']* $item['price']?></td>
+				<td><input name='delete' type='submit' value="delete"></td>
+				<!-- <a href=""><i class="fa fa-trash-o"></i></a><a href="/cart/edit/<?=$info[$i]['id']?>"> <i class="fa fa-pencil"></i></a></td> -->
 			</tr>
 			</form>
-			<?}
+				<?}
+				$sum=0;
+				foreach ($info as $item){
+					$total=$item['quantity']* $item['price'];
+					$sum+=$total;
+				}
 			?>
+
+			<tr>
+				<td><b>Total Price</b></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>$<?=$sum?></td>
+				<td>
 			<form action='/cart/complete' method='post'>
 			<button class="btn btn-default" type='submit' >Complete Purchase</button>
 			</form>
+			</td>
+
+
 			<form id='continue' name='continue' action='/admin/products' method='post'>
 			<button class= "btn btn-success" type='submit'>Continue shopping</button>
 			</form>

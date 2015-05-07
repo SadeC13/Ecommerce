@@ -132,10 +132,10 @@
 	</nav>
 	<div id="nav_bar" class="row">
 		<ul>
-			<li><a href="">HOME</a></li>|
-			<li><a href="">ABOUT</a></li>|
-			<li><a href="">MUSIC</a></li>|
-			<li><a href="">CONTACT</a></li>
+			<li><a href="/admin/index">HOME</a></li>|
+			<li><a href="/admin/about">ABOUT</a></li>|
+			<li><a href="/">MUSIC</a></li>|
+			<li><a href="/admin/about">CONTACT</a></li>
 		</ul>
 	</div>
 	<div class="container">

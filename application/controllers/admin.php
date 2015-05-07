@@ -12,6 +12,10 @@ public function __construct()
 	{
 		$this->load->view('home');
 	}
+	public function about()
+	{
+		$this->load->view('About');
+	}
 
 	public function products()
 	{	
