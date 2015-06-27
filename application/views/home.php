@@ -65,7 +65,6 @@
 				<a href="/admin/products"><i class="fa fa-spinner fa-pulse fa-5x"></i><p>What's New</p></a><br><br>
 				<a href="/admin/about"><i class="fa fa-heartbeat fa-5x"></i><p>What We Love</p></a><br><br>
 				<a href="/admin/login"><i class="fa fa-bars fa-5x"></i><p>Sign In</p></a>	<br>
-
 			</div>
 		</div>
 		<nav id="bottom_bar" class="navbar-fixed-bottom">
