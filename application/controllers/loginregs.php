@@ -46,7 +46,7 @@ class Loginregs extends CI_Controller {
 			$post=$this->input->post();
 			$user=$this->User->register($this->input->post());
 			$this->session->set_flashdata('registered', "Registered! now log in!");
-		 	redirect('/');
+		 	redirect('/loginregs/index');
 		 }
 	}
 

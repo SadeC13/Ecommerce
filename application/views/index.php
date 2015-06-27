@@ -55,6 +55,15 @@
 			font-size: 1.2em;
 			margin-bottom:3em;
 		}
+		.registered{
+			text-align: center;
+			margin-left:14em;
+			color:lime;
+			font-weight: bold;
+			font-size: 1.8em;
+			margin-bottom:-7em;
+			padding:0.5em;
+		}
 		
 	</style>
 </head>
@@ -66,7 +75,7 @@
 <?php if ($this->session->flashdata('reg_errors')) { ?> 
 <p class='error'> <?= $this->session->flashdata('reg_errors');?> </p>
 <?php } ?>
-<h2><?=$this->session->flashdata('registered')?></h2>
+<h2 class= 'registered'><?=$this->session->flashdata('registered')?></h2>
 <div class="container">
 		<a href="/"><img src="/assets/images/logo4.png"></a>
 		<div class='row'>
