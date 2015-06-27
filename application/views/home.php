@@ -51,7 +51,11 @@
 	<div class="container">
 		<div id="title" class="col-md-8">
 			<div class="row">
-				<h1>Welcome to</h1>
+				<h1>Welcome <?php if(isset($users)){
+					echo $users['first_name']."!";
+					}
+					else {
+						echo "to"; }?></h1>
 				<img src="/assets/images/logo4.png">
 			</div>
 		</div>

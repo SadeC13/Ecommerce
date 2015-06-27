@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <html>
 <head>
 	<title></title>
@@ -6,6 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<style type="text/css">
+
 		body{
 			background: url(/assets/images/BI4.jpg) no-repeat center center fixed;
 			background-size: cover; 
@@ -20,16 +23,16 @@
 			color: #E8E8E8;
 			padding-bottom: 15px; 
 			height: 515px;
+			/*display: inline-block;*/
 		}
 		#reg{
-			position: relative;
-  			top: 52px;
+  			border-color: white;
+  			padding:2%;
+  			
 		}
 		#log{
-			position: relative;
-  			left: 12%;
-  			top: 52px;
-  			padding-top: 91px;
+  			border-color: white;
+  			padding:2%;
 		}
 		p{
 			font-size: 30px;
@@ -44,53 +47,74 @@
 			margin:auto;
 			width:6%;
 		}
+		.error{
+			text-align: center;
+			margin-left:7em;
+			color:black;
+			font-weight: bold;
+			font-size: 1.2em;
+			margin-bottom:3em;
+		}
+		
 	</style>
 </head>
 <body>
-	<div class="container">
+<?php if($this->session->flashdata('add_errors')) { ?> 
+<div class='error'> 
+<?= $this->session->flashdata('add_errors');?> </div> 
+<?php } ?>
+<?php if ($this->session->flashdata('reg_errors')) { ?> 
+<p class='error'> <?= $this->session->flashdata('reg_errors');?> </p>
+<?php } ?>
+<h2><?=$this->session->flashdata('registered')?></h2>
+<div class="container">
 		<a href="/"><img src="/assets/images/logo4.png"></a>
-		<div class="row">
-			<form id="reg" class="col-md-5">
-				<h2>Register</h2>
-				<div class="form-group">
-				    <label for="first_name">First Name</label>
-				    <input type="text" class="form-control" id="first_name">
-				</div>
-				<div class="form-group">
-				    <label for="last_name">Last Name</label>
-				    <input type="text" class="form-control" id="last_name">
-				</div>
-				<div class="form-group">
-				    <label for="email">Email address</label>
-				    <input type="email" class="form-control" id="email">
-				</div>
-				<div class="form-group">
-				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password">
-				</div>
-				<div class="form-group">
-				    <label for="con_password">Confirm Password</label>
-				    <input type="password" class="form-control" id="con_password">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
-			<p>-or-</p>
-			<form id="log" class="col-md-5">
-				<h2>Login</h2>
-				<div class="form-group">
-				    <label for="email">Email address</label>
-				    <input type="email" class="form-control" id="email">
-				</div>
-				<div class="form-group">
-				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
+		<div class='row'>
+			<div class="col-md-6">
+				<form action='/loginregs/login_user' id="log" method='post'>
+					<h2>Login</h2>
+					<div class='form-group'>
+						<label for='email'>Email address</label>
+						<input type='email' class='form-control' name='email' placeholder='Enter email'>
+					</div>
+					<div class='form-group'>
+						<label for='password'>Password</label>
+						<input type='password' class='form-control' name='password' placeholder='password'>
+					</div>
+					<button type='submit' class='btn btn-default'>Submit</button>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<form action='/loginregs/register' id="reg" method='post'>
+					<h2>Register</h2>
+					<div class='form-group'>
+						<input type='hidden' name='id'>
+					</div>
+					<div class='form-group'>
+						<label for='first_name'>First Name</label>
+						<input type='text' class='form-control' name='first_name' placeholder='First Name'>
+					</div>
+					<div class='form-group'>
+						<label for='last_name'>Last Name</label>
+						<input type='text' class='form-control' name='last_name' placeholder='Last Name'>
+					</div>
+					<div class='form-group'>
+						<label for='email'>Email address</label>
+						<input type='email' class='form-control' name='email' placeholder='Enter email'>
+					</div>
+					<div class='form-group'>
+						<label for='password'>Password</label>
+						<input type='password' class='form-control' name='password' placeholder='password'>
+					</div>
+					<div class='form-group'>
+						<label for='password'>Confirm Password</label>
+						<input type='password' class='form-control' name='confirm' placeholder='confirm password'>
+					</div>
+					<button type='submit' class="btn btn-default">Submit</button>
+				</form>
+			</div>
 		</div>
-	</div>
-		<form id='home' action='/admin/index' method='post'>
-			<button class="btn btn-default" type='submit' >Home</button>
-			</form>
+</div>
+</div>
 </body>
 </html>

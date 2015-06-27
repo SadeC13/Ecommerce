@@ -44,7 +44,7 @@
 				</div>
 				<button id="cont_shop" type="submit" class="btn btn-default">Submit</button>
 			</form>	
-			<form class="col-md-6">
+			<form action= '/card/buy' method='post' class="col-md-6">
 				<h2>Billing Information</h2>
 				 <div class="checkbox">
 					<label>

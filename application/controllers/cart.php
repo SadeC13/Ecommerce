@@ -102,4 +102,9 @@ public function complete()
 		}
 
 	}
+	public function buy()
+	{
+		$this->load->view('stripe');
+	}
 }
+
