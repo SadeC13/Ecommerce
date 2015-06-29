@@ -62,13 +62,14 @@ th{
 }
 </style>
 <body>
-<?php $cart = ($this->session->userdata('cart')); ?>
+<?php $cart = ($this->session->userdata('info')); ?>
 	<nav id="top_bar" class="navbar navbar-default">
 		<div class="container">
 			<div class="row">
 			    <a href="/"><img src="/assets/images/logo4.png"></a>
 			    <ul>
-			    	<li><a href="#">Log In</a></li>
+			    	<li><a href="/loginregs/log_out">Log Out</a></li>
+			    	<li><a href="/admin/login">Log In</a></li>
 			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
 		    </div></li>
 			    </ul>
@@ -110,6 +111,8 @@ th{
 				<?}
 				$sum=0;
 				foreach ($info as $item){
+					// var_dump($info);
+					// die();
 					$total=$item['quantity']* $item['price'];
 					$sum+=$total;
 				}

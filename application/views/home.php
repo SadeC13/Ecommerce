@@ -45,17 +45,30 @@
 			list-style-type: none;
 			margin: 10px;
 		}
+		.error{
+			text-align:center;
+			color:lime;
+			margin-top:3em;
+			font-size:2em;
+		}
 	</style>
 </head>
 <body>
+<?php 
+if($this->session->flashdata('logged_in')) { ?> 
+<div class='error'> 
+<?= $this->session->flashdata('logged_in');?> </div> 
+<?php } ?>
 	<div class="container">
 		<div id="title" class="col-md-8">
 			<div class="row">
-				<h1>Welcome <?php if(isset($users)){
-					echo $users['first_name']."!";
+				<h1>Welcome <?php 
+				if($this->session->userdata('logged_in')){
+					echo $this->session->userdata('first_name')."!";
 					}
-					else {
-						echo "to"; }?></h1>
+				else {
+					echo "to"; 
+					}?></h1>
 				<img src="/assets/images/logo4.png">
 			</div>
 		</div>
@@ -75,6 +88,7 @@
 						<li><a href="">Terms and Conditions</a></li>|
 						<li><a href="">Privacy</a></li>|
 						<li><a href="">Jobs</a></li>
+						<li><a href="/loginregs/log_out">Log Out</a></li>
 					</ul> 
 				</div> 
 			</div>

@@ -10,7 +10,8 @@ public function __construct()
 	}
 	public function index()
 	{
-		$this->load->view('home');
+		$data=$this->session->userdata('first_name');
+		$this->load->view('home', $data);
 	}
 	public function about()
 	{

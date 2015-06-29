@@ -91,6 +91,7 @@
 			<div class="row">
 			    <a href="/"><img src="/assets/images/logo4.png"></a>
 			    <ul>
+			    	<li><a href="/loginregs/log_out">Log Out</a></li>
 			    	<li><a href="/admin/log_reg">Log In</a></li>
 			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
 		    </div></li>

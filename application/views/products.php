@@ -131,8 +131,11 @@
 			<div class="row">
 			    <a href="/"><img src="/assets/images/logo4.png"></a>
 			    <ul>
+			   		<li><a href="/loginregs/log_out">Log Out</a></li>
 			    	<li><a href="/admin/login">Log In</a></li>
-			    	<li><a href="/cart/view">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
+			    	<li><a href="/cart/view">
+			    	<?if($this->session->userdata('logged_in')){echo $this->session->userdata('first_name')."'s ";}?>
+			    	Shopping Cart <i class="fa fa-shopping-cart"></i></a>
 		    </div></li>
 			    </ul>
 			    

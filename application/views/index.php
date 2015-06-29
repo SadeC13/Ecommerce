@@ -49,11 +49,11 @@
 		}
 		.error{
 			text-align: center;
-			margin-left:7em;
+			margin-left:9em;
 			color:black;
 			font-weight: bold;
 			font-size: 1.2em;
-			margin-bottom:3em;
+			margin-bottom:7em;
 		}
 		.registered{
 			text-align: center;
@@ -68,6 +68,13 @@
 	</style>
 </head>
 <body>
+<?php
+session_start();
+	if($this->session->userdata['logged_in']){
+		$error="You are already logged in, log out to continue";
+		$this->session->set_flashdata('logged_in', $error);
+		header('Location: index');
+	} ?>
 <?php if($this->session->flashdata('add_errors')) { ?> 
 <div class='error'> 
 <?= $this->session->flashdata('add_errors');?> </div> 

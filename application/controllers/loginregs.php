@@ -1,4 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
+session_start();
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Loginregs extends CI_Controller {
 
@@ -80,6 +82,10 @@ class Loginregs extends CI_Controller {
 			else {
 				//SUCCESS
 				$data['users']=$this->User->get_user_by_email($email);
+				// $this->session->set_userdata('user', $data);
+				$this->session->set_userdata('logged_in', true);
+				$this->session->set_userdata('user', $data['users']);
+				$this->session->set_userdata('first_name', $data['users']['first_name']);
 				$this->load->view('home',$data);
 			}
 		if($errors)
@@ -92,9 +98,11 @@ class Loginregs extends CI_Controller {
 }
 public function log_out()
 {
-
-	$this->session->sess_destroy();
-	redirect('/loginregs/index');
+	$this->session->set_userdata('logged_in', false);
+	$cart= array();
+	$this->session->set_userdata('info', $cart);
+	session_destroy();
+	redirect('/admin/index');
 }
 }
 

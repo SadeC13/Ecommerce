@@ -17,26 +17,29 @@ class Cart extends CI_Controller {
 	{
 	// 	$this->session->sess_destroy();
 	// die();
+	// var_dump($user);
 		if (!($this->session->userdata('info'))) {
 			 $this->session->userdata('info', array());
 				$cart = $this->session->userdata('info');
 				$cart[] = $this->input->post();
 				$this->session->set_userdata('info', $cart);
+				// var_dump($this->session->userdata('info'));
+				// die();
 				redirect('/cart/view');
 		}
 		
-				foreach ($this->session->userdata('info') as $key => $value) {
-					if ($this->input->post('id') == $value['id']) {
-						$this_one = $this->session->userdata('info')[$key];
-						$this_one['quantity'] = (int)$this_one['quantity'] +  (int)$this->input->post('quantity');
-						$food = $this->session->userdata('info');
-						unset($food[$key]);
-						$food[] = $this_one;
-						$this->session->set_userdata('info', $food);
-						// var_dump($food);
-						redirect('/cart/view');
-					}
-				}
+		foreach ($this->session->userdata('info') as $key => $value) {
+			if ($this->input->post('id') == $value['id']) {
+				$this_one = $this->session->userdata('info')[$key];
+				$this_one['quantity'] = (int)$this_one['quantity'] +  (int)$this->input->post('quantity');
+				$food = $this->session->userdata('info');
+				unset($food[$key]);
+				$food[] = $this_one;
+				$this->session->set_userdata('info', $food);
+				// var_dump($food);
+				redirect('/cart/view');
+			}
+		}
 				$cart = $this->session->userdata('info');
 				$cart[] = $this->input->post();
 				$this->session->set_userdata('info', $cart);
@@ -102,9 +105,9 @@ public function complete()
 		}
 
 	}
-	public function buy()
-	{
-		$this->load->view('stripe');
-	}
+	// public function buy()
+	// {
+	// 	$this->load->view('stripe');
+	// }
 }
 
