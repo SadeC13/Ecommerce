@@ -125,6 +125,7 @@ th{
 				<td></td>
 				<td class="total">$<?=$sum?></td>
 				<td>
+				<?$this->session->set_userdata('sum', $sum);?>
 			<form action='/cart/complete' method='post'>
 			<button class="btn btn-default" type='submit' >Complete Purchase</button>
 			</form>

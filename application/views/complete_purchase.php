@@ -1,15 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<style type="text/css">
-	</style>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Stripe Getting Started Form</title>
+ 
+  <!-- The required Stripe lib -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+ 
+  <!-- jQuery is used only for this example; it isn't required to use Stripe -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ 
+  <script type="text/javascript">
+    // This identifies your website in the createToken call below
+    Stripe.setPublishableKey('YOUR_PUBLISHABLE_KEY');
+
+    var stripeResponseHandler = function(status, response) {
+      var $form = $('#payment-form');
+
+      if (response.error) {
+        // Show the errors on the form
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+      } else {
+        // token contains id, last4, and card type
+        var token = response.id;
+        // Insert the token into the form so it gets submitted to the server
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+        // and re-submit
+        $form.get(0).submit();
+      }
+    };
+
+    jQuery(function($) {
+      $('#payment-form').submit(function(e) {
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+      });
+    });
+  </script>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 		<div class="container">
 		<div class="row">
 			<form class="col-md-6">
@@ -44,8 +82,8 @@
 				</div>
 				<button id="cont_shop" type="submit" class="btn btn-default">Submit</button>
 			</form>	
-			<form action= '/card/buy' method='post' class="col-md-6">
-				<h2>Billing Information</h2>
+			<form action= '/card/buy' method='post' id="payment-form" class="col-md-6">
+ 		 <h2>Billing Information</h2>
 				 <div class="checkbox">
 					<label>
 			    		<input type="checkbox"> Same as Shipping
@@ -79,25 +117,39 @@
 				    <label for="zip">Zipcode</label>
 				    <input type="text" class="form-control" id="zipcode">
 				</div>
-				
-				<div class="form-group">
-				    <label for="card_num">Card</label>
-				    <input type="text" class="form-control" id="card_num">
-				</div>
-				<div class="form-group">
-				    <label for="security">Security Code</label>
-				    <input type="text" class="form-control" id="security">
-				</div>
-				<div class="form-group">
-				    <label for="exp">Expiration</label>
-				    <input type="text" id="mm" class="form-control"> / <input type="text" id="dd" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
-		</div>
-		<form action='/admin/index' method='post'>
-			<button class="btn btn-default" type='submit' >Home</button>
-			</form>
-	</div>
+  <h1>Charge $<?=$this->session->userdata('sum')?> with Stripe</h1>
+ 
+  <form action="" method="POST" id="payment-form">
+    <span class="payment-errors"></span>
+ 
+    <div class="form-row">
+      <label>
+        <span>Card Number</span>
+        <input type="text" size="20" data-stripe="number"/>
+      </label>
+    </div>
+ 
+    <div class="form-row">
+      <label>
+        <span>CVC</span>
+        <input type="text" size="4" data-stripe="cvc"/>
+      </label>
+    </div>
+ 
+    <div class="form-row">
+      <label>
+        <span>Expiration (MM/YYYY)</span>
+        <input type="text" size="2" data-stripe="exp-month"/>
+      </label>
+      <span> / </span>
+      <input type="text" size="4" data-stripe="exp-year"/>
+    </div>
+ 
+    <button type="submit">Submit Payment</button>
+  </form>
 </body>
 </html>
+
+	
+				
+			
