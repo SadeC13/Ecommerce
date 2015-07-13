@@ -107,20 +107,31 @@
 		}
 		#info_btn{
 			  position: relative;
-			  left: 60%;
-			  top: -47px;
+			  top: -19em;
+			  width:100%;
+			  height:100%;
+			  opacity: 0.0 !important;
 		}
 		ul{
 			list-style-type: none;
 		}
 		#sort_select{
 			  width: 20%;
-			  position: relative;
-			  top: -50px;
-
+			  position: absolute;
+			  top: 5.5%;
 		}
 		#pagination{
 			text-align: center;
+		}
+		.gofilter{
+			color:black;
+			position:absolute;
+			margin-left:21%;
+			margin-top:-6%;
+
+		}
+		.pager{
+
 		}
 
 	</style>
@@ -191,12 +202,16 @@
 			    <li><a href="#">Next   <i class="fa fa-arrow-right"></i></a></li>
 			  </ul>
 			</nav>
-			<select id="sort_select" class="form-control">
+			<form action="/admin/products" method="post">
+			<select name='filter' onchange='this.form.submit()' id="sort_select" class="form-control">
 				<option>Sort by...</option>
-				<option>Most Popular</option>
-				<option>Price</option>
-				<option>Recently Added</option>
+				<option value='artist'>Artist</option>
+				<option value='price'>Price (low to high)</option>
+				<option value='name'>Album Name</option>
+				<option value='updated'>Recently Added</option>
 			</select>
+			<noscript><input type='submit' class='gofilter' value='go'></noscript>
+			</form>
 		<div id="products_diplay" class="row">
 			<?foreach ($albums as $album) {?>
 			<form action='/products/view_product_info' method='post'>

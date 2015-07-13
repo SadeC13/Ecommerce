@@ -46,6 +46,15 @@
     });
   </script>
 </head>
+<style>
+.back{
+	background-color:yellow;
+	border-radius:10%;
+	width:8em;
+	height:2.5em;
+	margin:1em;
+}
+</style>
 <body>
 <nav class="navbar navbar-default">
 		<div class="container">
@@ -119,7 +128,7 @@
 				</div>
   <h1>Charge $<?=$this->session->userdata('sum')?> with Stripe</h1>
  
-  <form action="" method="POST" id="payment-form">
+  <form action="/admin/charge" method="POST" id="payment-form">
     <span class="payment-errors"></span>
  
     <div class="form-row">
@@ -147,6 +156,14 @@
  
     <button type="submit">Submit Payment</button>
   </form>
+
+  <button class='back' onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </body>
 </html>
 

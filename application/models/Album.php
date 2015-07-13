@@ -7,6 +7,35 @@ class Album extends CI_Controller
 		$albums=$this->db->query($query)->result_array();
 		return $albums;
 	}
+	public function view_artist_filter()
+	{
+		$query="SELECT * FROM albums
+		ORDER BY artist";
+		$albums=$this->db->query($query)->result_array();
+		return $albums;
+	}
+	public function view_price_filter()
+	{
+		$query="SELECT * FROM albums
+		ORDER BY price";
+		$albums=$this->db->query($query)->result_array();
+		return $albums;
+	}
+	public function view_name_filter()
+	{
+		$query="SELECT * FROM albums
+		ORDER BY name";
+		$albums=$this->db->query($query)->result_array();
+		return $albums;
+	}
+	public function view_created_filter()
+	{
+		$query="SELECT * FROM albums
+		ORDER BY updated_at";
+		$albums=$this->db->query($query)->result_array();
+		return $albums;
+	}
+
 	public function create($post)
 	{
 		$query="INSERT INTO albums(name) VALUES(?)";
@@ -22,7 +51,7 @@ class Album extends CI_Controller
 		}
 		$this->session->set_userdata('info', $new_session_data);
 	}
-	public function update($post)
+	public function update($post) 
 	{
 		$query="UPDATE albums SET name = ?, artist= ?, genre= ?, description = ?, price= ?  WHERE id =?";
 		$this->db->query($query, array($post['name'],$post['artist'], $post['genre'],$post['description'],$post['price'],$post['id']));

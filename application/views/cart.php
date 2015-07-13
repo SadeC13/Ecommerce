@@ -51,15 +51,18 @@
 			color: white;
 		}
 		.total{
-			color: #E8E8E8;
+			color: black;
+		}
+		.table1{
+			background-color:white;
 		}
 table img{
 	height:150px;
 	width:150px;
 }
-th{
+/*th{
 	color: #E8E8E8;
-}
+}*/
 </style>
 <body>
 <?php $cart = ($this->session->userdata('info')); ?>
@@ -85,7 +88,7 @@ th{
 		</ul>
 	</div>
 	<div class="container">
-		<table class="table table-striped">
+		<table class="table table1">
 			<thead>
 				<th>album</th>
 				<th>Item</th>

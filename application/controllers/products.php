@@ -8,5 +8,13 @@ public function view_product_info()
 	$data['album']=$this->Album->view($this->input->post());
 	$this->load->view('product_view',$data);
 }
+// public function filter()
+// {
+// 	$this->load->model('Album');
+// 	if($this->input->post('filter') && $this->input->post('filter') == 'artist'){
+// 	$data['albums']=$this->Album->view_artist_filter($this->input->post());
+// 	$this->load->view('products', $data);
+// 	};
+// }
 
 }
